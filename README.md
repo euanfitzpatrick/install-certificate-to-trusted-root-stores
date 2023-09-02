@@ -10,6 +10,10 @@ To use this batch script, you will first need a Root Certificate, ideally in a `
 **N.B.** if the certificate is in a `.crt` format instead, you will need to modify the script accordingly.
 
 To use the script, just type in the file name of the certificate at the prompt (without the extension). For example, if your Root Certificate existed in the folder as `myRootCA.cer`, you would type `myRootCA` at the prompt.
+
+**IMPORTANT NOTE:**
+
+This script must be run as an administrator account, as it places the certificates in the `Local Machine` store on the device.
 ## Authors
 
 - [@Euan Fitzpatrick](https://www.github.com/euanfitzpatrick) from [@Future Evolved Group](https://github.com/future-evolved-group) 
