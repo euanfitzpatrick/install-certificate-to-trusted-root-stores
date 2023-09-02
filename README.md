@@ -1,11 +1,11 @@
 # Install Certificates to Trusted Root Stores
 
-A quick batch file script to install a certificate in the same folder as the script to the Trusted Root Store on the Local Machine the script is run on.
+A quick batch file script to install a certificate in the same folder as the script to the Trusted Root Store / Intermediate Certificate Authority Store on the Local Machine the script is run on.
 
 
 ## Usage/Examples
 
-To use this batch script, you will first need a Root Certificate, ideally in a `.cer` format.
+To use this batch script, you will first need a Root or Subordinate Certificate, ideally in a `.cer` format.
 
 **N.B.** if the certificate is in a `.crt` format instead, you will need to modify the script accordingly.
 
