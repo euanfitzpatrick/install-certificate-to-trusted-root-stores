@@ -42,18 +42,18 @@ if not exist "%certFile%" (
     goto askInstallAnotherCertificate
 )
 
-REM Install the certificate using PowerShell
-powershell.exe -Command "Import-Certificate -FilePath \"%certFile%\" -CertStoreLocation \"Cert:\LocalMachine\!store!\""
+REM Install the certificate using certutil and redirect both standard output and error output to nul
+certutil -addstore "!store!" "%certFile%" > nul 2>&1
 
-REM Check if the certificate is now installed
-powershell.exe -Command "if (Get-ChildItem -Path \"Cert:\LocalMachine\!store!\" | Where-Object { $_.Thumbprint -eq (Get-FileHash -Algorithm SHA1 -Path \"%certFile%\" | Select-Object -ExpandProperty Hash) }) { exit 0 } else { exit 1 }"
+REM Verify if the certificate is now installed
+certutil -store "!store!" | findstr /i /c:"%certFile%" > nul
 
 :askInstallAnotherCertificate
 REM Prompt the user to install another certificate
 echo.
 echo Would you like to install another certificate?
 echo 1: Yes
-echo 2: No
+echo 2: No (exit)
 echo.
 set /p "installAnother=Enter the number (1 or 2) for your choice: "
 
